@@ -1,0 +1,273 @@
+<!--Saved by Quest 5.6.5783.24153-->
+<asl version="550">
+  <include ref="English.aslx" />
+  <include ref="Core.aslx" />
+  <game name="The Ship">
+    <gameid>f98eca93-a909-4472-965d-eff35c99fb45</gameid>
+    <version>1.0</version>
+    <firstpublished>2016</firstpublished>
+    <menufont>Georgia, serif</menufont>
+  </game>
+  <object name="Infirmary">
+    <inherit name="editor_room" />
+    <exit alias="north" to="Suspended Animation Chamber">
+      <inherit name="northdirection" />
+    </exit>
+    <exit alias="south" to="Life Support">
+      <inherit name="southdirection" />
+    </exit>
+    <exit alias="west" to="Passage">
+      <inherit name="westdirection" />
+    </exit>
+  </object>
+  <object name="Bridge">
+    <inherit name="editor_room" />
+    <exit alias="north" to="Astrometrics">
+      <inherit name="northdirection" />
+    </exit>
+    <exit alias="east" to="Barracks">
+      <inherit name="eastdirection" />
+    </exit>
+  </object>
+  <object name="Captains Quarters">
+    <inherit name="editor_room" />
+    <alias>CaptainsQuarters</alias>
+    <exit alias="south" to="Junction">
+      <inherit name="southdirection" />
+    </exit>
+  </object>
+  <object name="Astrometrics">
+    <inherit name="editor_room" />
+    <exit alias="south" to="Bridge">
+      <inherit name="southdirection" />
+    </exit>
+    <exit alias="east" to="Sensors">
+      <inherit name="eastdirection" />
+    </exit>
+  </object>
+  <object name="Sensors">
+    <inherit name="editor_room" />
+    <exit alias="west" to="Astrometrics">
+      <inherit name="westdirection" />
+    </exit>
+    <exit alias="south" to="Barracks">
+      <inherit name="southdirection" />
+    </exit>
+  </object>
+  <object name="Barracks">
+    <inherit name="editor_room" />
+    <exit alias="west" to="Bridge">
+      <inherit name="westdirection" />
+    </exit>
+    <exit alias="north" to="Sensors">
+      <inherit name="northdirection" />
+    </exit>
+    <exit alias="east" to="Junction">
+      <inherit name="eastdirection" />
+    </exit>
+    <exit alias="up" to="Airlock">
+      <inherit name="updirection" />
+    </exit>
+  </object>
+  <object name="Airlock">
+    <inherit name="editor_room" />
+    <exit alias="down" to="Barracks">
+      <inherit name="downdirection" />
+    </exit>
+  </object>
+  <object name="Junction">
+    <inherit name="editor_room" />
+    <exit alias="west" to="Barracks">
+      <inherit name="westdirection" />
+    </exit>
+    <exit alias="north" to="Captains Quarters">
+      <inherit name="northdirection" />
+    </exit>
+    <exit alias="south" to="Officer Quarters">
+      <inherit name="southdirection" />
+    </exit>
+    <exit alias="east" to="Corridor">
+      <inherit name="eastdirection" />
+    </exit>
+  </object>
+  <object name="Officer Quarters">
+    <inherit name="editor_room" />
+    <alias>OfficerQuarters</alias>
+    <exit alias="north" to="Junction">
+      <inherit name="northdirection" />
+    </exit>
+    <exit alias="south" to="Armory">
+      <inherit name="southdirection" />
+    </exit>
+  </object>
+  <object name="Armory">
+    <inherit name="editor_room" />
+    <exit alias="east" to="Water Storage">
+      <inherit name="eastdirection" />
+    </exit>
+    <exit alias="north" to="Officer Quarters">
+      <inherit name="northdirection" />
+    </exit>
+  </object>
+  <object name="Garbage">
+    <inherit name="editor_room" />
+    <exit alias="up" to="Engineering">
+      <inherit name="updirection" />
+    </exit>
+  </object>
+  <object name="Crew Quarters">
+    <inherit name="editor_room" />
+    <alias>CrewQuarters</alias>
+    <exit alias="south" to="Corridor">
+      <inherit name="southdirection" />
+    </exit>
+  </object>
+  <object name="Corridor">
+    <inherit name="editor_room" />
+    <exit alias="west" to="Junction">
+      <inherit name="westdirection" />
+    </exit>
+    <exit alias="north" to="Crew Quarters">
+      <inherit name="northdirection" />
+    </exit>
+    <exit alias="south" to="Engineering">
+      <inherit name="southdirection" />
+    </exit>
+    <exit alias="east" to="Mess Hall">
+      <inherit name="eastdirection" />
+    </exit>
+  </object>
+  <object name="Engineering">
+    <inherit name="editor_room" />
+    <exit alias="north" to="Corridor">
+      <inherit name="northdirection" />
+    </exit>
+    <exit alias="south" to="Water Storage">
+      <inherit name="southdirection" />
+    </exit>
+    <exit alias="down" to="Garbage">
+      <inherit name="downdirection" />
+    </exit>
+  </object>
+  <object name="Water Storage">
+    <inherit name="editor_room" />
+    <alias>WaterStorage</alias>
+    <exit alias="north" to="Engineering">
+      <inherit name="northdirection" />
+    </exit>
+    <exit alias="west" to="Armory">
+      <inherit name="westdirection" />
+    </exit>
+  </object>
+  <object name="Library">
+    <inherit name="editor_room" />
+    <exit alias="south" to="Mess Hall">
+      <inherit name="southdirection" />
+    </exit>
+  </object>
+  <object name="Mess Hall">
+    <inherit name="editor_room" />
+    <alias>MessHall</alias>
+    <exit alias="west" to="Corridor">
+      <inherit name="westdirection" />
+    </exit>
+    <exit alias="east" to="Suspended Animation Chamber">
+      <inherit name="eastdirection" />
+    </exit>
+    <exit alias="south" to="Passage">
+      <inherit name="southdirection" />
+    </exit>
+    <exit alias="north" to="Library">
+      <inherit name="northdirection" />
+    </exit>
+  </object>
+  <object name="Passage">
+    <inherit name="editor_room" />
+    <exit alias="north" to="Mess Hall">
+      <inherit name="northdirection" />
+    </exit>
+    <exit alias="east" to="Infirmary">
+      <inherit name="eastdirection" />
+    </exit>
+    <exit alias="south" to="Observation Deck">
+      <inherit name="southdirection" />
+    </exit>
+  </object>
+  <object name="Observation Deck">
+    <inherit name="editor_room" />
+    <alias>ObservationDeck</alias>
+    <exit alias="north" to="Passage">
+      <inherit name="northdirection" />
+    </exit>
+  </object>
+  <object name="Science Lab">
+    <inherit name="editor_room" />
+    <alias>ScienceLab</alias>
+    <exit alias="south" to="Suspended Animation Chamber">
+      <inherit name="southdirection" />
+    </exit>
+  </object>
+  <object name="Suspended Animation Chamber">
+    <inherit name="editor_room" />
+    <alias>SuspendedAnimationChamber</alias>
+    <object name="player">
+      <inherit name="editor_object" />
+      <inherit name="editor_player" />
+    </object>
+    <exit alias="west" to="Mess Hall">
+      <inherit name="westdirection" />
+    </exit>
+    <exit alias="north" to="Science Lab">
+      <inherit name="northdirection" />
+    </exit>
+    <exit alias="south" to="Infirmary">
+      <inherit name="southdirection" />
+    </exit>
+    <exit alias="east" to="Engines Controls">
+      <inherit name="eastdirection" />
+    </exit>
+  </object>
+  <object name="Life Support">
+    <inherit name="editor_room" />
+    <alias>LifeSupport</alias>
+    <exit alias="north" to="Infirmary">
+      <inherit name="northdirection" />
+    </exit>
+  </object>
+  <object name="Cargo Bay">
+    <inherit name="editor_room" />
+    <alias>CargoBay</alias>
+    <exit alias="south" to="Engines Controls">
+      <inherit name="southdirection" />
+    </exit>
+  </object>
+  <object name="Engines Controls">
+    <inherit name="editor_room" />
+    <alias>EnginesControls</alias>
+    <exit alias="west" to="Suspended Animation Chamber">
+      <inherit name="westdirection" />
+    </exit>
+    <exit alias="north" to="Cargo Bay">
+      <inherit name="northdirection" />
+    </exit>
+    <exit alias="south" to="Waste Recycling">
+      <inherit name="southdirection" />
+    </exit>
+  </object>
+  <object name="Waste Recycling">
+    <inherit name="editor_room" />
+    <alias>WasteRecycling</alias>
+    <exit alias="north" to="Engines Controls">
+      <inherit name="northdirection" />
+    </exit>
+    <exit alias="south" to="Brig">
+      <inherit name="southdirection" />
+    </exit>
+  </object>
+  <object name="Brig">
+    <inherit name="editor_room" />
+    <exit alias="north" to="Waste Recycling">
+      <inherit name="northdirection" />
+    </exit>
+  </object>
+</asl>

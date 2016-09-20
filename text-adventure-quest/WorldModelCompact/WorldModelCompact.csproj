@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BC8C8EE8-1727-4608-AFB9-8E2FD27112C5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TextAdventures.Quest</RootNamespace>
+    <AssemblyName>WorldModelCompact</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Ciloci.Flee">
+      <HintPath>..\WorldModelCompactSln\packages\Trove.FLEE.0.9.26.0\lib\net20\Ciloci.Flee.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip">
+      <HintPath>..\WorldModelCompactSln\packages\Unofficial.Ionic.Zip.1.9.1.8\lib\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Callback.cs" />
+    <Compile Include="Element.cs" />
+    <Compile Include="Elements.cs" />
+    <Compile Include="Fields.cs" />
+    <Compile Include="Functions\Expression.cs" />
+    <Compile Include="Functions\ExpressionOwner.cs" />
+    <Compile Include="Functions\IFunction.cs" />
+    <Compile Include="Functions\StringFunctions.cs" />
+    <Compile Include="GameLoader\AttributeLoaders.cs" />
+    <Compile Include="GameLoader\ElementLoaders.cs" />
+    <Compile Include="GameLoader\ElementSavers.cs" />
+    <Compile Include="GameLoader\ExtendedAttributeLoaders.cs" />
+    <Compile Include="GameLoader\FieldSaver.cs" />
+    <Compile Include="GameLoader\GameLoader.cs" />
+    <Compile Include="GameLoader\GameSaver.cs" />
+    <Compile Include="GameLoader\GameXmlWriter.cs" />
+    <Compile Include="GameLoader\ObjectSaver.cs" />
+    <Compile Include="GameLoader\Packager.cs" />
+    <Compile Include="GameLoader\PackageReader.cs" />
+    <Compile Include="GameTypes\GameState.cs" />
+    <Compile Include="GameTypes\ObjectTypeBase.cs" />
+    <Compile Include="GameTypes\ObjectTypeCommand.cs" />
+    <Compile Include="GameTypes\ObjectTypeExit.cs" />
+    <Compile Include="GameTypes\ObjectTypeObject.cs" />
+    <Compile Include="GameTypes\ObjectTypeUtils.cs" />
+    <Compile Include="Interface\IASLDebug.cs" />
+    <Compile Include="Interface\IASLTimer.cs" />
+    <Compile Include="Interface\IController.cs" />
+    <Compile Include="Interface\IGameController.cs" />
+    <Compile Include="Interface\ISimulation.cs" />
+    <Compile Include="Interface\IWalkthrough.cs" />
+    <Compile Include="Interface\IWalkthroughs.cs" />
+    <Compile Include="Interface\ListData.cs" />
+    <Compile Include="Interface\MenuData.cs" />
+    <Compile Include="Interface\ObjectsUpdatedEventArgs.cs" />
+    <Compile Include="ObjectFactory.cs" />
+    <Compile Include="OutputLogger.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuestDictionary.cs" />
+    <Compile Include="QuestList.cs" />
+    <Compile Include="RegexCache.cs" />
+    <Compile Include="ScriptFactory.cs" />
+    <Compile Include="Scripts\AskScript.cs" />
+    <Compile Include="Scripts\CommentScript.cs" />
+    <Compile Include="Scripts\Context.cs" />
+    <Compile Include="Scripts\CreateScript.cs" />
+    <Compile Include="Scripts\DelegateImplementation.cs" />
+    <Compile Include="Scripts\DestroyScript.cs" />
+    <Compile Include="Scripts\DictionaryAddScript.cs" />
+    <Compile Include="Scripts\DoScript.cs" />
+    <Compile Include="Scripts\ErrorScript.cs" />
+    <Compile Include="Scripts\FailedScript.cs" />
+    <Compile Include="Scripts\FinishScript.cs" />
+    <Compile Include="Scripts\FirstTimeScript.cs" />
+    <Compile Include="Scripts\ForEachScript.cs" />
+    <Compile Include="Scripts\ForScript.cs" />
+    <Compile Include="Scripts\FunctionCallParameters.cs" />
+    <Compile Include="Scripts\FunctionCallScript.cs" />
+    <Compile Include="Scripts\GetInputScript.cs" />
+    <Compile Include="Scripts\IfScript.cs" />
+    <Compile Include="Scripts\InsertScript.cs" />
+    <Compile Include="Scripts\InvokeScript.cs" />
+    <Compile Include="Scripts\IScript.cs" />
+    <Compile Include="Scripts\JSScript.cs" />
+    <Compile Include="Scripts\LazyLoadScript.cs" />
+    <Compile Include="Scripts\ListAddScript.cs" />
+    <Compile Include="Scripts\MsgScript.cs" />
+    <Compile Include="Scripts\MultiScript.cs" />
+    <Compile Include="Scripts\OnReadyScript.cs" />
+    <Compile Include="Scripts\PictureScript.cs" />
+    <Compile Include="Scripts\PlaySoundScript.cs" />
+    <Compile Include="Scripts\RequestScript.cs" />
+    <Compile Include="Scripts\ReturnScript.cs" />
+    <Compile Include="Scripts\RunDelegateScript.cs" />
+    <Compile Include="Scripts\ScriptConstructorBase.cs" />
+    <Compile Include="Scripts\ScriptContext.cs" />
+    <Compile Include="Scripts\SetFieldScript.cs" />
+    <Compile Include="Scripts\SetScript.cs" />
+    <Compile Include="Scripts\ShowMenuScript.cs" />
+    <Compile Include="Scripts\SortScript.cs" />
+    <Compile Include="Scripts\SwitchScript.cs" />
+    <Compile Include="Scripts\UndoScript.cs" />
+    <Compile Include="Scripts\WaitScript.cs" />
+    <Compile Include="Scripts\WhileScript.cs" />
+    <Compile Include="Templates.cs" />
+    <Compile Include="TimerRunner.cs" />
+    <Compile Include="Types\EditorCommandPattern.cs" />
+    <Compile Include="Types\LazyObjectDictionary.cs" />
+    <Compile Include="Types\LazyObjectList.cs" />
+    <Compile Include="Types\LazyObjectReference.cs" />
+    <Compile Include="Types\LazyScript.cs" />
+    <Compile Include="Types\LazyScriptDictionary.cs" />
+    <Compile Include="UndoLogger.cs" />
+    <Compile Include="Utility.cs" />
+    <Compile Include="Utility\Classes.cs" />
+    <Compile Include="Walkthrough.cs" />
+    <Compile Include="WorldModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Ionic.Zip.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
