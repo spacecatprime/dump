@@ -6,10 +6,6 @@ using System.Threading.Tasks;
 
 namespace JobRunner
 {
-    // https://en.wikipedia.org/wiki/Breadth-first_search
-    // http://www.mathcs.emory.edu/~cheung/Courses/171/Syllabus/11-Graph/bfs.html
-    // http://algs4.cs.princeton.edu/41graph/BreadthFirstPaths.java.html
-    // https://tutorialedge.net/breadth-first-search-with-java
     // use a queue
 
     class BreadthFirstSearch<T> : ISearch<T>

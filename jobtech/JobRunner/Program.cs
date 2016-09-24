@@ -77,6 +77,34 @@ namespace JobRunner
             System.Diagnostics.Debug.Assert(search.HasValue(graph.Nodes[0], "7"));
             System.Diagnostics.Debug.Assert(false == search.HasValue(graph.Nodes[0], "10"));
         }
+
+        public static void PrintArray<T>( T[] array, string prefix)
+        {
+            Console.Write(prefix);
+            array.ToList().ForEach(i => Console.Write(i + ","));
+            Console.WriteLine();
+        }
+
+        public static void QuickSort(string[] args)
+        {
+            QuickSort sorter = new QuickSort();
+
+            int[] dataOne = new int[] { 1, 2, 5, 6, 9, 3 };
+            PrintArray(dataOne, "Unsorted: ");
+            sorter.DoWork(dataOne, 0, dataOne.Length - 1);
+            PrintArray(dataOne, "Sorted: ");
+
+            BinarySearcher.Result ret1 = BinarySearcher.DoSearch(dataOne, 2);
+            System.Diagnostics.Debug.Assert(ret1.found);
+            BinarySearcher.Result ret2 = BinarySearcher.DoSearch(dataOne, 10);
+            System.Diagnostics.Debug.Assert(false == ret2.found);
+
+            Random r = new Random();
+            int[] radomData = new int[] { r.Next() % 100, r.Next() % 100, r.Next() % 100, r.Next(), r.Next() % 100, r.Next() % 100, r.Next() % 100, r.Next() % 100 };
+            PrintArray(radomData, "Unsorted random: ");
+            sorter.DoWork(radomData, 0, radomData.Length - 1);
+            PrintArray(radomData, "Sorted random: ");
+        }
     }
     
     class Program
@@ -87,6 +115,7 @@ namespace JobRunner
             Tests.StringReverse(args);
             Tests.BreadthFirstSearch();
             Tests.DepthFirstSearch();
+            Tests.QuickSort(args);
             
             Console.ReadLine();
         }
