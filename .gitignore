@@ -6,9 +6,12 @@
 *.cache
 *.resources
 *.nupkg
+*.suo
 text-adventure-quest/WorldModelCompactSln/packages/**
 text-adventure-quest/WorldModelCompactSln/WorldModelCompactSln.v12.suo
 text-adventure-quest/WorldModelCompactTester/bin/**
 text-adventure-quest/WorldModelCompactTester/obj/**
 text-adventure-quest/WorldModelCompact/bin/**
 text-adventure-quest/WorldModelCompact/obj/**
+jobtech/JobRunner/obj/**
+jobtech/JobRunner/bin/**
