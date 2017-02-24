@@ -15,3 +15,17 @@ text-adventure-quest/WorldModelCompact/bin/**
 text-adventure-quest/WorldModelCompact/obj/**
 jobtech/JobRunner/obj/**
 jobtech/JobRunner/bin/**
+testing/design/obj/**
+testing/design/bin/**
+testing/testing/Debug/**
+testing/unit_tests/Debug/**
+*.sdf
+*.opendb
+*.obj
+*.exe
+*.ilk
+*.exp
+*.lib
+*.ipch
+*.pch
+*.idb

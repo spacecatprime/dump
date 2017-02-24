@@ -11,6 +11,29 @@ namespace WorldModelCompactTester
 {
     class Program
     {
+        static void RunTheShip()
+        {
+            string folder = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().CodeBase).Substring(6).Replace("/", @"\");
+            WorldModel worldModel = new WorldModel(System.IO.Path.Combine(folder, @"..\..\TheShip.aslx"), null);
+            DefaultController defaultController = new DefaultController();
+            defaultController.m_worldModel = worldModel;
+            worldModel.Initialise(defaultController);
+            worldModel.Begin();
+            while (defaultController.m_continue)
+            {
+                string stdin = System.Console.ReadLine();
+                if (stdin == "quit")
+                {
+                    defaultController.Quit();
+                }
+                else
+                {
+                    worldModel.SendCommand(stdin);
+                }
+            }
+            worldModel.Finish();
+        }
+
         static void Main(string[] args)
         {
             // http://stackoverflow.com/questions/4518544/xmlreader-from-a-string-content
@@ -35,26 +58,8 @@ namespace WorldModelCompactTester
                 Console.WriteLine(string.Format("Could not find {0}", x));
                 return null;
             };
-
-            string folder = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().CodeBase).Substring(6).Replace("/", @"\");
-            WorldModel worldModel = new WorldModel(System.IO.Path.Combine(folder, @"..\..\TheShip.aslx"), null);
-            DefaultController defaultController = new DefaultController();
-            defaultController.m_worldModel = worldModel;
-            worldModel.Initialise(defaultController);
-            worldModel.Begin();
-            while (defaultController.m_continue)
-            {
-                string stdin = System.Console.ReadLine();
-                if (stdin == "quit")
-                {
-                    defaultController.Quit();
-                }
-                else
-                {
-                    worldModel.SendCommand(stdin);
-                }
-            }
-            worldModel.Finish();
+            
+            RunTheShip();
         }
     }
 }

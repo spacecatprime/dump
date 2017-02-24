@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorldModelCompact", "..\WorldModelCompact\WorldModelCompact.csproj", "{BC8C8EE8-1727-4608-AFB9-8E2FD27112C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorldModelCompactTester", "..\WorldModelCompactTester\WorldModelCompactTester.csproj", "{0295466F-AE3F-4E00-86D1-DE078DA53BFA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BC8C8EE8-1727-4608-AFB9-8E2FD27112C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC8C8EE8-1727-4608-AFB9-8E2FD27112C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC8C8EE8-1727-4608-AFB9-8E2FD27112C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC8C8EE8-1727-4608-AFB9-8E2FD27112C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0295466F-AE3F-4E00-86D1-DE078DA53BFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0295466F-AE3F-4E00-86D1-DE078DA53BFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0295466F-AE3F-4E00-86D1-DE078DA53BFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0295466F-AE3F-4E00-86D1-DE078DA53BFA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

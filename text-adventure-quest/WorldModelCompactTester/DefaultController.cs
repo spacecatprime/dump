@@ -215,6 +215,7 @@ namespace WorldModelCompactTester
         public void SetCompassDirections(IEnumerable<string> dirs)
         {
             CompassDirections = dirs.ToList();
+            PrintDataWithColor<string>(ConsoleColor.DarkCyan, "SetCompassDirections", CompassDirections, delegate (string dir) { return dir; });
         }
 
         public string InterfaceName { get; private set; }

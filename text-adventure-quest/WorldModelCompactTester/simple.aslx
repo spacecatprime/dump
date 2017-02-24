@@ -1,0 +1,51 @@
+<!--Saved by Quest 5.6.5783.24153-->
+<asl version="550">
+  <include ref="English.aslx" />
+  <include ref="Core.aslx" />
+  <game name="simple">
+    <gameid>10c07d88-6be4-4fa5-988e-09dfc3681ed8</gameid>
+    <version>1.0</version>
+    <firstpublished>2017</firstpublished>
+    <description>a unit test quest map</description>
+  </game>
+  <object name="start room">
+    <inherit name="editor_room" />
+    <description>The starting room.</description>
+    <object name="player">
+      <inherit name="editor_object" />
+      <inherit name="editor_player" />
+    </object>
+    <object name="box">
+      <inherit name="editor_object" />
+      <look>a simple box</look>
+      <inventoryverbs type="stringlist">
+        <value>Look at</value>
+        <value>Use</value>
+        <value>Drop</value>
+        <value>Open</value>
+      </inventoryverbs>
+      <take />
+      <takemsg>a simple box</takemsg>
+      <feature_container />
+    </object>
+  </object>
+  <object name="red room">
+    <inherit name="editor_room" />
+    <description>The red room.</description>
+  </object>
+  <object name="blue room">
+    <inherit name="editor_room" />
+    <description>The blue room.</description>
+  </object>
+  <object name="green room">
+    <inherit name="editor_room" />
+    <description>The green room.</description>
+  </object>
+  <object name="yellow room">
+    <inherit name="editor_room" />
+    <alt type="stringlist">
+      <value>yellow ink</value>
+    </alt>
+    <description>The yellow room.</description>
+  </object>
+</asl>
