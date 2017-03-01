@@ -18,7 +18,13 @@ jobtech/JobRunner/bin/**
 testing/design/obj/**
 testing/design/bin/**
 testing/testing/Debug/**
+testing/Release/**
 testing/unit_tests/Debug/**
+testing/testing/x64/**
+testing/x64/**
+testing/testing/Release/**
+*.log
+*.tlog
 *.sdf
 *.opendb
 *.obj

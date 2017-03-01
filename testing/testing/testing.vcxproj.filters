@@ -27,6 +27,12 @@
     <ClInclude Include="lifegame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="sparselife.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lifegrid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -36,6 +42,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="lifegame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sparselife.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lifegrid.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

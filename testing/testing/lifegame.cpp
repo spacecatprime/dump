@@ -18,9 +18,29 @@ generation is a pure function of the preceding one). The rules continue to be ap
 */
 
 // TODO a sparse grid cell impl
-// TODO find a simpler cell accessor modulus formula
 
 #include <conio.h>
+
+#define _EARLY_OUT 0
+#define _FIND_MODULUS 1
+#define _DO_CHECK 1
+
+#if _FIND_MODULUS
+
+// D: 59
+// R: 18.252 or 19.414
+
+bool FindCell(LifeGame::GridArray& grid, int x, int y, int width, int height)
+{
+	int theX = (x + width) % width;
+	int theY = (y + height) % height;
+	return grid.at((theY * width) + theX);
+}
+
+#else
+
+// D: 55
+// R: 13.338 or 13.897
 
 bool FindCell(LifeGame::GridArray& grid, int x, int y, int width, int height)
 {
@@ -45,6 +65,29 @@ bool FindCell(LifeGame::GridArray& grid, int x, int y, int width, int height)
 	}
 	return grid.at((theY * width) + theX);
 }
+#endif
+
+#if _EARLY_OUT
+
+int NumNeighbors(LifeGame::GridArray& grid, int x, int y, int width, int height)
+{
+	int num = FindCell(grid, x - 1, y - 1, width, height) ? 1 : 0;
+	num += FindCell(grid, x - 1, y + 0, width, height) ? 1 : 0;
+	num += FindCell(grid, x - 1, y + 1, width, height) ? 1 : 0;
+	if (num > 2) return num;
+	num += FindCell(grid, x + 0, y - 1, width, height) ? 1 : 0;
+	if (num > 2) return num;
+	num += FindCell(grid, x + 0, y + 1, width, height) ? 1 : 0;
+	if (num > 2) return num;
+	num += FindCell(grid, x + 1, y - 1, width, height) ? 1 : 0;
+	if (num > 2) return num;
+	num += FindCell(grid, x + 1, y + 0, width, height) ? 1 : 0;
+	if (num > 2) return num;
+	num += FindCell(grid, x + 1, y + 1, width, height) ? 1 : 0;
+	return num;
+}
+
+#else
 
 int NumNeighbors(LifeGame::GridArray& grid, int x, int y, int width, int height)
 {
@@ -58,6 +101,8 @@ int NumNeighbors(LifeGame::GridArray& grid, int x, int y, int width, int height)
 	num += FindCell(grid, x + 1, y + 1, width, height) ? 1 : 0;
 	return num;
 }
+
+#endif
 
 bool NextTurn(LifeGame::GridArray& grid, size_t stride, size_t total, LifeGame::GridArray& nextPage)
 {
@@ -74,7 +119,7 @@ bool NextTurn(LifeGame::GridArray& grid, size_t stride, size_t total, LifeGame::
 
 		if (!target)
 		{
-			// Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
+			// Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
 			if (num == 3)
 			{
 				nextPage[i] = true;
@@ -82,12 +127,12 @@ bool NextTurn(LifeGame::GridArray& grid, size_t stride, size_t total, LifeGame::
 		}
 		else if (num < 2)
 		{
-			// Any live cell with fewer than two live neighbours dies, as if caused by underpopulation.
+			// Any live cell with fewer than two live neighbors dies, as if caused by under population.
 			nextPage[i] = false;
 		}
 		else if (num > 3)
 		{
-			// Any live cell with more than three live neighbours dies, as if by overpopulation.
+			// Any live cell with more than three live neighbors dies, as if by overpopulation.
 			nextPage[i] = false;
 		}
 	}
@@ -114,33 +159,89 @@ static const LifeGame::GridArray s_gridTwo =
 	0, 0, 0, 0, 0, 0,
 };
 
+static const LifeGame::GridArray k_grid0 = 
+{
+	1,0,0,0,0,0,
+	1,0,0,0,0,0,
+	1,0,0,0,0,0,
+	0,0,0,0,0,0,
+	0,0,0,0,0,0,
+	0,0,0,1,1,1
+};
+
+static const LifeGame::GridArray k_grid1 =
+{
+	1,0,0,0,1,0,
+	1,1,0,0,0,1,
+	0,0,0,0,0,0,
+	0,0,0,0,0,0,
+	0,0,0,0,1,0,
+	0,0,0,0,1,1
+};
+
+static const LifeGame::GridArray k_grid2 = {
+
+	0,1,0,0,1,0,
+	1,1,0,0,0,1,
+	1,0,0,0,0,0,
+	0,0,0,0,0,0,
+	0,0,0,0,1,1,
+	0,0,0,1,1,0
+};
+
+static const LifeGame::GridArray k_grid3 = {
+	0,1,1,1,1,0,
+	0,1,0,0,0,1,
+	1,1,0,0,0,1,
+	0,0,0,0,0,1,
+	0,0,0,1,1,1,
+	0,0,0,1,0,0
+};
+
 LifeGame::LifeGame()
 {
-	m_gridOne = s_gridOne;
-	m_gridTwo = s_gridTwo;
+	m_gridOne = new GridArray();
+	m_gridTwo = new GridArray();
+
+#if 1
+	*m_gridOne = k_grid0;
+	*m_gridTwo = k_grid1;
+	m_onPageOne = true;
+#else
+	*m_gridOne = s_gridOne;
+	*m_gridTwo = s_gridTwo;
 	m_onPageOne = false;
+#endif
 }
 
 LifeGame::~LifeGame()
 {
+	delete m_gridTwo;
+	m_gridTwo = nullptr;
+	delete m_gridOne;
+	m_gridOne = nullptr;
 }
 
 bool LifeGame::Run()
 {
-	GridArray& thisPage = (m_onPageOne) ? m_gridTwo : m_gridOne;
-	GridArray& nextPage = (m_onPageOne) ? m_gridOne : m_gridTwo;
-	NextTurn(thisPage, LifeGame::k_Stride, thisPage.max_size(), nextPage);
+	GridArray* thisPage = (m_onPageOne) ? m_gridTwo : m_gridOne;
+	GridArray* nextPage = (m_onPageOne) ? m_gridOne : m_gridTwo;
+	NextTurn(*thisPage, LifeGame::k_Stride, thisPage->max_size(), *nextPage);
 
+#if _DO_CHECK
+	if (m_onPageOne)
+	{
+		m_onPageOne ^= true;
+		return *m_gridTwo == s_gridTwo;
+	}
+	else
+	{
+		m_onPageOne ^= true;
+		return *m_gridOne == s_gridOne;
+	}
+#else
 	m_onPageOne ^= true;
-
-	if (thisPage == m_gridOne)
-	{
-		return m_gridTwo == s_gridTwo;
-	}
-	else if (thisPage == m_gridTwo)
-	{
-		return m_gridOne == s_gridOne;
-	}
+#endif
 
 	return false;
 }
