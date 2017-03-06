@@ -16,3 +16,4 @@ text-adventure-quest/WorldModelCompact/obj/**
 jobtech/JobRunner/obj/**
 jobtech/JobRunner/bin/**
 *.obj
+AdventureEngine/AdventureEngine/obj/**
