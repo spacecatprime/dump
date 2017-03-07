@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using AdventureEngine.Interface;
 using System.Collections;
 
-namespace AdventureEngine.System
+namespace AdventureEngine.Factory
 {
     /// <summary>
     /// create default entities or deserializes an entity from a stream

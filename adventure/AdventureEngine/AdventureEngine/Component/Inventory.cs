@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace AdventureEngine.Component
 {
+    /// <summary>
+    /// a Container that a Character owns
+    /// </summary>
     public class Inventory
     {
     }

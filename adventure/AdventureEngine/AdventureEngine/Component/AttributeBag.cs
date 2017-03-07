@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdventureEngine.System
+namespace AdventureEngine.Component
 {
     /// <summary>
-    /// contains the states of the game for the model
+    /// a set of named values
     /// </summary>
-    public class GameEngine
+    public class AttributeBag
     {
     }
 }

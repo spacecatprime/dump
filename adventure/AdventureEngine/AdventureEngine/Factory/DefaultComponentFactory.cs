@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AdventureEngine.Component;
 
-namespace AdventureEngine.System
+namespace AdventureEngine.Factory
 {
     public class DefaultComponentFactory
     {

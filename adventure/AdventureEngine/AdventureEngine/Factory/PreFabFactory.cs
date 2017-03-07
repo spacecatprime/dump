@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AdventureEngine.Interface;
 
-namespace AdventureEngine.System
+namespace AdventureEngine.Factory
 {
     public class PreFabFactory
     {
@@ -21,5 +21,9 @@ namespace AdventureEngine.System
             m_preFabFunctionMap.Add(instance.TypeId, func);
             return true;
         }
+    }
+
+    public class PreFabFactory2 : FactoryTemplate<IPreFab, object, string>
+    {
     }
 }
