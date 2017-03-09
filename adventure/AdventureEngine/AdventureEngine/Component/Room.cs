@@ -11,7 +11,7 @@ namespace AdventureEngine.Component
     {
         string IComponent.TypeId
         {
-            get { return "{1CF1EAE8-DC42-45DB-9047-34F8C201945D}"; }
+            get { return typeof(Room).ToString(); }
         }
 
         bool IComponent.OnEnd(Object context)

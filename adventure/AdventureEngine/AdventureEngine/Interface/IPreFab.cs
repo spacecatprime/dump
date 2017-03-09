@@ -9,11 +9,8 @@ namespace AdventureEngine.Interface
     /// <summary>
     /// contructs a preset number of Components for an Entity
     /// </summary>
-    public interface IPreFab
+    public interface IPreFab<TInput>
     {
-        IEntity CreateDefault(object context);
-
-        // a unique value per PreFab type
-        string TypeId { get; }
+        IEntity Construct(TInput context);
     }
 }

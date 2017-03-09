@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AdventureEngine.Interface;
+using AdventureEngine.System;
 
 namespace AdventureEngine.Factory
 {
+#if false
     public class PreFabFactory
     {
         private Dictionary<string, Func<object, IPreFab>> m_preFabFunctionMap = new Dictionary<string, Func<object, IPreFab>>();
@@ -22,8 +24,23 @@ namespace AdventureEngine.Factory
             return true;
         }
     }
-
-    public class PreFabFactory2 : FactoryTemplate<IPreFab, object, string>
+#else
+    public struct PreFabDesc
     {
     }
+
+    public class PreFabFactory : FactoryTemplate<IPreFab<PreFabDesc>, PreFabDesc, Type> // <TOutput, TContext, TKey>
+    {
+        public PreFabFactory(GameEngine ge)
+            : base(ge)
+        {
+  
+        }
+
+        public void RegisterPreFabFactory<TOutput>(Func<GameEngine, PreFabDesc, IPreFab<PreFabDesc>> func)  where TOutput : class, IPreFab<PreFabDesc>
+        {
+            base.ReigsterFactoryMethod(func, () => typeof(TOutput));
+        }
+    }
+#endif
 }

@@ -39,7 +39,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Action\ActionBus.cs" />
+    <Compile Include="Action\MoveAction.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="Component\AbstractComponent.cs" />
     <Compile Include="Component\AttributeBag.cs" />
     <Compile Include="Component\Character.cs" />
     <Compile Include="Component\Container.cs" />
@@ -47,6 +50,8 @@
     <Compile Include="Component\Item.cs" />
     <Compile Include="Component\Portal.cs" />
     <Compile Include="Component\Room.cs" />
+    <Compile Include="Entity\AbstractEntity.cs" />
+    <Compile Include="Factory\FactoryTemplate.cs" />
     <Compile Include="Interface\IComponent.cs" />
     <Compile Include="Interface\IEntity.cs" />
     <Compile Include="Interface\IPreFab.cs" />

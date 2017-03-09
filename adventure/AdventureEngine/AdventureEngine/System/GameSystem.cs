@@ -11,6 +11,13 @@ namespace AdventureEngine.System
     /// </summary>
     public abstract class GameSystem
     {
+        protected GameEngine m_gameEngine;
+
+        public GameSystem(GameEngine gameEngine)
+        {
+            m_gameEngine = gameEngine;
+        }
+
         public virtual bool CanHandle(string tokens)
         {
             throw new NotImplementedException();

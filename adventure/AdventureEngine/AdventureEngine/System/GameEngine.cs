@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AdventureEngine.Action;
 
 namespace AdventureEngine.System
 {
@@ -11,5 +12,6 @@ namespace AdventureEngine.System
     /// </summary>
     public class GameEngine
     {
+        private ActionBus m_actionBus = new ActionBus();
     }
 }

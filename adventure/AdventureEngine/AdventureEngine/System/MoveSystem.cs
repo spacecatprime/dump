@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace AdventureEngine.System
 {
-    public class MoveSystem :  GameSystem
+    public class MoveSystem : GameSystem
     {
+        public MoveSystem(GameEngine gameEngine) 
+            : base(gameEngine)
+        {
+        }
     }
 }
