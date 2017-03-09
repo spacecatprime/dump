@@ -4,24 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AdventureEngine.Interface;
+using AdventureEngine.System;
 
 namespace AdventureEngine.Factory
 {
-    public class ComponentFactory
+    public class ComponentFactory : FactoryTemplate<IComponent, object, Type>
     {
-        private Dictionary<string, Func<IComponent>> m_componentFunctionMap = new Dictionary<string, Func<IComponent>>();
-
-        public bool RegisterComponentFactory(Func<IComponent> func)
+        public ComponentFactory(GameEngine ge)
+            : base(ge)
         {
-            IComponent comp = func();
-            if (m_componentFunctionMap.ContainsKey(comp.TypeId))
-            {
-                return false;
-            }
-            m_componentFunctionMap.Add(comp.TypeId, func);
-            return true;
         }
     }
-
-
 }

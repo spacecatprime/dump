@@ -6,7 +6,21 @@ using System.Threading.Tasks;
 
 namespace AdventureEngine.Component
 {
-    public class Item
+    public class Item : AbstractComponent<Item>
     {
+        public override Boolean OnEnd(Object context)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override Boolean OnInit(Object context)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override Boolean OnStart(Object context)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

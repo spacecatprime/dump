@@ -7,24 +7,19 @@ using AdventureEngine.Interface;
 
 namespace AdventureEngine.Component
 {
-    public class Room : IComponent
+    public class Room : AbstractComponent<Room>
     {
-        string IComponent.TypeId
-        {
-            get { return typeof(Room).ToString(); }
-        }
-
-        bool IComponent.OnEnd(Object context)
+        public override Boolean OnEnd(Object context)
         {
             throw new NotImplementedException();
         }
 
-        bool IComponent.OnInit(Object context)
+        public override Boolean OnInit(Object context)
         {
             throw new NotImplementedException();
         }
 
-        bool IComponent.OnStart(Object context)
+        public override Boolean OnStart(Object context)
         {
             throw new NotImplementedException();
         }
