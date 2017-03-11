@@ -12,19 +12,9 @@ namespace AdventureEngine.Component
     // might also have state of : locked, open, closed
     // might also have propertis of : carriable, usable, 
     /// </summary>
-    public class Container : AbstractComponent<Container>
+    public class Container : AbstractComponent
     {
-        public override Boolean OnEnd(Object context)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override Boolean OnInit(Object context)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override Boolean OnStart(Object context)
+        public override Boolean OnStart()
         {
             throw new NotImplementedException();
         }

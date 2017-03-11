@@ -15,6 +15,7 @@ namespace AdventureEngine.System
     {
         private ActionBus m_actionBus = new ActionBus();
         private ComponentFactory m_componentFactory;
+        private ActionBusByKey<Entity.EntityId, object> m_EntityActionBus = new ActionBusByKey<Entity.EntityId, object>();
 
         public GameEngine()
         {
@@ -26,7 +27,8 @@ namespace AdventureEngine.System
             DefaultComponentFactory.RegisterDefaultAdventureComponents(m_componentFactory);
         }
 
-        public ActionBus Bus { get { return m_actionBus; } }
+        public ActionBus SytemActionBus { get { return m_actionBus; } }
         public ComponentFactory ComponentFactory { get { return m_componentFactory; } }
+        public ActionBusByKey<Entity.EntityId, object> EntityActionBus { get { return m_EntityActionBus; } }
     }
 }

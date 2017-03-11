@@ -7,15 +7,22 @@ using System.Threading.Tasks;
 
 namespace AdventureEngine.Component
 {
-    public abstract class AbstractComponent<T> : IComponent
+    public abstract class AbstractComponent : IComponent
     {
-        public String TypeId
+        protected IEntity m_ownedEntity  = null;
+
+        bool IComponent.OnInit(IEntity entity)
         {
-            get { return typeof(T).ToString(); }
+            m_ownedEntity = entity;
+            return true;
         }
 
-        public abstract Boolean OnEnd(Object context);
-        public abstract Boolean OnInit(Object context);
-        public abstract Boolean OnStart(Object context);
+        abstract public bool OnStart();
+
+        bool IComponent.OnEnd()
+        {
+            m_ownedEntity = null;
+            return true;
+        }
     }
 }

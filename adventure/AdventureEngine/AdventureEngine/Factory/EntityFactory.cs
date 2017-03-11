@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AdventureEngine.Interface;
 using System.Collections;
+using AdventureEngine.Entity;
 
 namespace AdventureEngine.Factory
 {
@@ -20,11 +21,11 @@ namespace AdventureEngine.Factory
             private List<IComponent> m_components = new List<IComponent>();
             private List<IEntity> m_children = new List<IEntity>();
             private IEntity m_parent = null;
-            private string m_uid;
+            private EntityId m_uid;
 
             public DefaultEnity()
             {
-                m_uid = Guid.NewGuid().ToString();
+                m_uid = new EntityId(Guid.NewGuid());
             }
 
             public List<IComponent> Components
@@ -45,7 +46,7 @@ namespace AdventureEngine.Factory
                 return m_children;
             }
 
-            public string GetId()
+            public EntityId GetId()
             {
                 return m_uid;
             }

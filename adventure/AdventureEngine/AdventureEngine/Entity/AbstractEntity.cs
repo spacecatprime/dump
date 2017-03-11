@@ -9,14 +9,14 @@ namespace AdventureEngine.Entity
 {
     public abstract class AbstractEntity : IEntity
     {
-        protected string m_uuid;
+        protected EntityId m_uuid;
         protected List<IComponent> m_components = new List<IComponent>();
         protected List<IEntity> m_children = new List<IEntity>();
         protected IEntity m_parent = null;
 
         public AbstractEntity()
         {
-            m_uuid = Guid.NewGuid().ToString();
+            m_uuid = new EntityId(Guid.NewGuid());
         }
 
         List<IComponent> IEntity.Components
@@ -37,7 +37,7 @@ namespace AdventureEngine.Entity
             return m_children;
         }
 
-        String IEntity.GetId()
+        EntityId IEntity.GetId()
         {
             return m_uuid;
         }

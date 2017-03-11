@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AdventureEngine.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,7 @@ namespace AdventureEngine.Interface
         // all simulated objects start with this one
 
         // a unique value per IEntity instance
-        string GetId();
+        EntityId GetId();
 
         // a list of owned children Entity
         List<IEntity> GetChildren();

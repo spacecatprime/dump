@@ -15,6 +15,9 @@ namespace AdventureRunner
 
             PrefabTests pTests = new PrefabTests();
             pTests.RunSimpleTest();
+
+            SmallTests smallTests = new SmallTests();
+            smallTests.Run();
         }
     }
 }

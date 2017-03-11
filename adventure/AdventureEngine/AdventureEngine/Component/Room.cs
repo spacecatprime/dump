@@ -7,19 +7,9 @@ using AdventureEngine.Interface;
 
 namespace AdventureEngine.Component
 {
-    public class Room : AbstractComponent<Room>
+    public class Room : AbstractComponent
     {
-        public override Boolean OnEnd(Object context)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override Boolean OnInit(Object context)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override Boolean OnStart(Object context)
+        public override Boolean OnStart()
         {
             throw new NotImplementedException();
         }

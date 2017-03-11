@@ -9,19 +9,9 @@ namespace AdventureEngine.Component
     /// <summary>
     /// a Container that a Character owns
     /// </summary>
-    public class Inventory : AbstractComponent<Inventory>
+    public class Inventory : AbstractComponent
     {
-        public override Boolean OnEnd(Object context)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override Boolean OnInit(Object context)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override Boolean OnStart(Object context)
+        public override Boolean OnStart()
         {
             throw new NotImplementedException();
         }
