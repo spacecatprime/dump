@@ -11,7 +11,7 @@ namespace AdventureEngine.Component
     {
         public override Boolean OnStart()
         {
-            throw new NotImplementedException();
+            return true;
         }
     }
 }

@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace AdventureEngine.Entity
 {
+    // other classes that might help out
+    // TODO: EntityObserver class so that events can be emitted between entities & components from a registered location
+    // TODO: EntityBroadcaster; handles efficient ways to transmit events to trees of entities 
+
     public struct EntityId
     {
         public Guid guid;

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdventureEngine.Action
+namespace AdventureEngine.Bus
 {
     public class MoveAction
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdventureEngine.Action
+namespace AdventureEngine.Bus
 {
     public class ActionList : List<Delegate>
     {
@@ -16,28 +16,26 @@ namespace AdventureEngine.Action
         {
         }
 
-        private ActionMap m_ActionList = new ActionMap();
+        private ActionMap m_actionMap = new ActionMap();
 
-        // TODO some kind of EntityId to ActionMap
-
-        public void Subscribe<T>(Action<T> action)
+        public void Subscribe<T, TInput>(Action<TInput> action)
         {
             // TODO make some attributes to filter action bus types such as MaxSubsubscribers
 
             Type type = typeof(T);
-            if (m_ActionList.ContainsKey(type))
+            if (m_actionMap.ContainsKey(type))
             {
-                m_ActionList[type].Add(action);
+                m_actionMap[type].Add(action);
             }
             ActionList actionList = new ActionList();
             actionList.Add(action);
-            m_ActionList.Add(type, actionList);
+            m_actionMap.Add(type, actionList);
         }
 
-        public void Signal<T>(T signalValue)
+        public void Signal<T, TInput>(TInput signalValue)
         {
             ActionList actions;
-            if (m_ActionList.TryGetValue(typeof(T), out actions))
+            if (m_actionMap.TryGetValue(typeof(T), out actions))
             {
                 actions.ForEach(a => a.DynamicInvoke(signalValue));
             }
@@ -67,5 +65,6 @@ namespace AdventureEngine.Action
                 actions.ForEach(a => a.DynamicInvoke(signalValue));
             }
         }
+
     }
 }

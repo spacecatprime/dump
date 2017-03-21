@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AdventureEngine.Interface;
-using AdventureEngine.System;
+using AdventureEngine.Model;
 
 namespace AdventureEngine.Factory
 {

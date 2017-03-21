@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AdventureEngine.Bus;
+using System;
 
 namespace AdventureRunner
 {
@@ -16,9 +17,9 @@ namespace AdventureRunner
 
         public void TestSimple()
         {
-            AdventureEngine.Action.ActionBus bus = new AdventureEngine.Action.ActionBus();
-            bus.Subscribe<ActionType>(new Action<ActionType>(Callback));
-            bus.Signal<ActionType>(new ActionType());
+            ActionBus bus = new ActionBus();
+            bus.Subscribe<ActionType, ActionType>(new Action<ActionType>(Callback));
+            bus.Signal<ActionType, ActionType>(new ActionType());
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using AdventureEngine.Entity;
 using AdventureEngine.Factory;
 using AdventureEngine.Interface;
+using AdventureEngine.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,7 @@ namespace AdventureRunner
                 return new FooEntity();
             }
 
-            public static FooPreFab SpawnPreFabFoo(AdventureEngine.System.GameEngine ge, PreFabDesc desc)
+            public static FooPreFab SpawnPreFabFoo(GameEngine ge, PreFabDesc desc)
             {
                 return new FooPreFab();
             }
@@ -31,7 +32,7 @@ namespace AdventureRunner
 
         public void RunSimpleTest()
         {
-            PreFabFactory factory = new PreFabFactory(new AdventureEngine.System.GameEngine());
+            PreFabFactory factory = new PreFabFactory(new GameEngine());
             factory.RegisterPreFabFactory<FooPreFab>(FooPreFab.SpawnPreFabFoo);
             var f = factory.Create(typeof(FooPreFab), new PreFabDesc());
             var o = f.Construct(new PreFabDesc());

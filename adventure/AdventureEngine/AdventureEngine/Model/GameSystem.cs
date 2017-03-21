@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdventureEngine.System
+namespace AdventureEngine.Model
 {
     /// <summary>
     /// the logic parts of the game engine
