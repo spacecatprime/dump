@@ -55,7 +55,7 @@ namespace AdventureEngine.Model
 //                SytemActionBus.Signal<EndEvent, EntityEvent>(new EntityEvent(root));
                 m_rootEntities.Remove(root);
             }
-            throw new Exception("Could not find root enity to remove");
+            throw new Exception("Could not find root entity to remove");
         }
 
         public IReadOnlyList<IEntity> Roots()
