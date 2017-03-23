@@ -9,7 +9,11 @@ namespace AdventureEngine.Component
     /// <summary>
     /// a Container that a Character owns
     /// </summary>
-    public class Inventory
+    public class Inventory : AbstractComponent
     {
+        public override Boolean OnStart()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

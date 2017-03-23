@@ -4,26 +4,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AdventureEngine.Interface;
+using AdventureEngine.Model;
 
 namespace AdventureEngine.Factory
 {
-    public class PreFabFactory
+    public struct PreFabDesc
     {
-        private Dictionary<string, Func<object, IPreFab>> m_preFabFunctionMap = new Dictionary<string, Func<object, IPreFab>>();
-
-        public bool RegisterPreFabFactory(Func<object, IPreFab> func)
-        {
-            IPreFab instance = func(null);
-            if (m_preFabFunctionMap.ContainsKey(instance.TypeId))
-            {
-                return false;
-            }
-            m_preFabFunctionMap.Add(instance.TypeId, func);
-            return true;
-        }
     }
 
-    public class PreFabFactory2 : FactoryTemplate<IPreFab, object, string>
+    public class PreFabFactory : FactoryTemplate<IPreFab<PreFabDesc>, PreFabDesc, Type>
     {
+        public PreFabFactory(GameEngine ge)
+            : base(ge)
+        {
+  
+        }
+
+        public void RegisterPreFabFactory<TOutput>(Func<GameEngine, PreFabDesc, IPreFab<PreFabDesc>> func)  where TOutput : class, IPreFab<PreFabDesc>
+        {
+            base.ReigsterFactoryMethod(func, () => typeof(TOutput));
+        }
     }
 }

@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace AdventureEngine.Component
 {
-    public class Portal
+    /// <summary>
+    /// represents a link between two rooms
+    /// </summary>
+    public class Portal : AbstractComponent
     {
+        public override Boolean OnStart()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -7,26 +7,11 @@ using AdventureEngine.Interface;
 
 namespace AdventureEngine.Component
 {
-    public class Room : IComponent
+    public class Room : AbstractComponent
     {
-        string IComponent.TypeId
+        public override Boolean OnStart()
         {
-            get { return "{1CF1EAE8-DC42-45DB-9047-34F8C201945D}"; }
-        }
-
-        bool IComponent.OnEnd(Object context)
-        {
-            throw new NotImplementedException();
-        }
-
-        bool IComponent.OnInit(Object context)
-        {
-            throw new NotImplementedException();
-        }
-
-        bool IComponent.OnStart(Object context)
-        {
-            throw new NotImplementedException();
+            return true;
         }
     }
 }

@@ -9,7 +9,11 @@ namespace AdventureEngine.Component
     /// <summary>
     /// a set of named values
     /// </summary>
-    public class AttributeBag
+    public class AttributeBag : AbstractComponent 
     {
+        public override Boolean OnStart()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

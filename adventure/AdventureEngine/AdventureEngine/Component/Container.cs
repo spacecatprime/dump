@@ -6,11 +6,17 @@ using System.Threading.Tasks;
 
 namespace AdventureEngine.Component
 {
-    public class Container
+    /// <summary>
+    ///     // contains items
+    // might have limits such as lockers, or might be a Room
+    // might also have state of : locked, open, closed
+    // might also have propertis of : carriable, usable, 
+    /// </summary>
+    public class Container : AbstractComponent
     {
-        // contains items
-        // might have limits such as lockers, or might be a Room
-        // might also have state of : locked, open, closed
-        // might also have propertis of : carriable, usable, 
+        public override Boolean OnStart()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

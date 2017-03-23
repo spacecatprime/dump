@@ -10,6 +10,14 @@ namespace AdventureRunner
     {
         static void Main(string[] args)
         {
+            ActionTests test = new ActionTests();
+            test.TestSimple();
+
+            PrefabTests pTests = new PrefabTests();
+            pTests.RunSimpleTest();
+
+            SmallTests smallTests = new SmallTests();
+            smallTests.Run();
         }
     }
 }
