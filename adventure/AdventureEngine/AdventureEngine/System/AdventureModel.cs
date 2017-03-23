@@ -13,19 +13,14 @@ namespace AdventureEngine.System
     /// </summary>
     public class AdventureModel
     {
-        ISerializer GetSerializer()
+        private GameEngine m_gameEngine = new GameEngine();
+        public GameEngine TheGameEngine 
         {
-            throw new NotImplementedException();
+            get { return m_gameEngine; }
+            set { m_gameEngine = value; }
         }
-        bool RegisterGameSystem(GameSystem gameSys)
-        {
-            throw new NotImplementedException();
-        }
-        bool UnregisterGameSystem(GameSystem gameSys)
-        {
-            throw new NotImplementedException();
-        }
-        void Tick(double delta)
+
+        public void Tick(double delta)
         {
             throw new NotImplementedException();
         }

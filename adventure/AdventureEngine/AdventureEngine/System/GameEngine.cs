@@ -8,8 +8,17 @@ namespace AdventureEngine.System
 {
     /// <summary>
     /// contains the states of the game for the model
+    /// holds the GameSystem instances
     /// </summary>
     public class GameEngine
     {
+        public virtual bool RegisterGameSystem(GameSystem gameSys)
+        {
+            throw new NotImplementedException();
+        }
+        public virtual bool UnregisterGameSystem(GameSystem gameSys)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
