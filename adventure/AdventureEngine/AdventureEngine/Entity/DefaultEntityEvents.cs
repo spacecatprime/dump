@@ -14,6 +14,7 @@ namespace AdventureEngine.Entity
         {
             actionBus.Subscribe<StartEvent, EntityEvent>((data) => StartEvent.OnStartEntityEvent(data));
             actionBus.Subscribe<InitEvent, EntityEvent>((data) => InitEvent.OnInitEntityEvent(data));
+            actionBus.Subscribe<EndEvent, EntityEvent>((data) => EndEvent.OnStopEntityEvent(data));
         }
     }
 

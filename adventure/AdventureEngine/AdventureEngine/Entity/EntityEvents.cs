@@ -1,5 +1,6 @@
 ﻿using AdventureEngine.Bus;
 using AdventureEngine.Interface;
+using AdventureEngine.Component;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,44 @@ using System.Threading.Tasks;
 
 namespace AdventureEngine.Entity
 {
+    public class BaseEntityEvent
+    {
+        private Action<IComponent> handleComponet;
+
+        public BaseEntityEvent(Action<IComponent> handler)
+        {
+            handleComponet = handler;
+        }
+
+        public void OnEntityEvent(EntityEvent data)
+        {
+            if (data.Target == null)
+            {
+                throw new Exception("Should have a target");
+            }
+            SignalTree(data.Target, data.IncludeChildren);
+        }
+
+        protected void SignalTree(IEntity entity, bool includeChildren)
+        {
+            // start all components
+            foreach (var c in entity.Components)
+            {
+                handleComponet.DynamicInvoke(c);
+            }
+
+            // go down the kid tree
+            if (includeChildren)
+            {
+                var children = entity.GetChildren();
+                foreach (var child in children)
+                {
+                    SignalTree(child, includeChildren);
+                }
+            }
+        }
+    }
+
     /// <summary>
     /// An event that runs the "OnStart" method on a target entity;
     /// optionally calls OnStart on all children components
@@ -16,30 +55,17 @@ namespace AdventureEngine.Entity
     {
         static internal void OnStartEntityEvent(EntityEvent data)
         {
-            if (data.Target == null)
-            {
-                throw new Exception("Should have a target");
-            }
-            StartComponents(data.Target, data.IncludeChildren);
+            BaseEntityEvent handler = new BaseEntityEvent(c => c.OnStart());
+            handler.OnEntityEvent(data);
         }
+    }
 
-        private static void StartComponents(IEntity entity, bool includeChildren)
+    public class EndEvent
+    {
+        static internal void OnStopEntityEvent(EntityEvent data)
         {
-            // start all components
-            foreach (var c in entity.Components)
-            {
-                c.OnStart();
-            }
-
-            // go dow the kid tree
-            if(includeChildren)
-            {
-                var children = entity.GetChildren();
-                foreach (var child in children)
-                {
-                    StartComponents(child, includeChildren);
-                }
-            }
+            BaseEntityEvent handler = new BaseEntityEvent(c => c.OnEnd());
+            handler.OnEntityEvent(data);
         }
     }
 
@@ -62,7 +88,7 @@ namespace AdventureEngine.Entity
                 c.OnInit(entity);
             }
 
-            // go dow the kid tree
+            // go down the kid tree
             if (includeChildren)
             {
                 var children = entity.GetChildren();
