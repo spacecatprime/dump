@@ -8,6 +8,7 @@ namespace logical
 {
     public class MatchUser
     {
+        public Guid m_id = Guid.NewGuid();
         public long m_rankPoints = 0;
         public long m_gamesWon = 0;
         public long m_gamesLost = 0;
@@ -22,13 +23,23 @@ namespace logical
 
         public override string ToString()
         {
-            return string.Format("{0}, {1}, {2}", m_rankPoints, m_gamesWon, m_gamesLost);
+            return string.Format("{3}: {0}, {1}, {2}", m_rankPoints, m_gamesWon, m_gamesLost, m_id.ToString());
         }
     }
 
     public class MatchResult
     {
         public List<MatchUser> m_items = new List<MatchUser>();
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (var m in m_items)
+            {
+                sb.AppendLine(m.ToString());
+            }
+            return sb.ToString();
+        }
     }
 
     // match algorithm 
@@ -112,7 +123,7 @@ namespace logical
                 if (indexOfBiggerNeighbour == sortedList.Count)
                 {
                     // bigger than all elements
-                    return -1;
+                    return sortedList.Count;
                 }
                 else if (indexOfBiggerNeighbour == 0)
                 {
@@ -135,23 +146,16 @@ namespace logical
             MatchResult result = new MatchResult();
 
             int self = BinarySearch(seekerList, m_target.m_rankPoints);
-            for (int i = self; i < seekerList.Count - 1; ++i)
+            if (self < 0 || self > seekerList.Count)
             {
-                if (seekerList[i] != m_target)
-                {
-                    // found somebody with a perfect match for the target
-                    result.m_items.Add(seekerList[i]);
-                    ++self;
-                }
-                if (result.m_items.Count >= maxMatches)
-                {
-                    return result;
-                }
+                // TODO: detect out of bounds for 'self'
+                return result;
             }
-            // TODO: detect out of bounds for 'self'
-
             int first = UpperBound(seekerList, m_target.m_rankPoints + m_deviation);
+            first = (first < 0) ? 0 : first;
+
             int last = UpperBound(seekerList, m_target.m_rankPoints - m_deviation);
+            last = (last >= 0) ? seekerList.Count -1 : last;
 
             for (int i = first; i < last; ++i)
             {
@@ -161,6 +165,10 @@ namespace logical
                     if (!result.m_items.Contains(seekerList[i]))
                     {
                         result.m_items.Add(seekerList[i]);
+                    }
+                    if (result.m_items.Count >= maxMatches)
+                    {
+                        return result;
                     }
                 }
             }
@@ -178,7 +186,7 @@ namespace logical
             {
                 mm.AddSeeker(new MatchUser(i % 5, i % 3, i % 2));
             }
-            var result = mm.GetMatchResult(new MySingleUserMatcher(mm.m_seekingUsers[0], 3), 4);
+            var result = mm.GetMatchResult(new MySingleUserMatcher(mm.m_seekingUsers[4], 1), 4);
             Console.WriteLine(result);
         }
 
