@@ -15,6 +15,7 @@ text-adventure-quest/WorldModelCompact/bin/**
 text-adventure-quest/WorldModelCompact/obj/**
 jobtech/JobRunner/obj/**
 jobtech/JobRunner/bin/**
+testing/testing.VC.*
 testing/design/obj/**
 testing/design/bin/**
 testing/testing/Debug/**
@@ -23,6 +24,8 @@ testing/unit_tests/Debug/**
 testing/testing/x64/**
 testing/x64/**
 testing/testing/Release/**
+testing/logical/obj/**
+testing/logical/bin/**
 *.log
 *.tlog
 *.sdf
