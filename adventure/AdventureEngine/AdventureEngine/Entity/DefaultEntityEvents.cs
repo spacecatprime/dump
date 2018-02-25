@@ -10,7 +10,7 @@ namespace AdventureEngine.Entity
 {
     public class DefaultEntityEvents
     {
-        static public void Register(ActionBus actionBus)
+        static public void RegisterForDefaultAdventureEngine(ActionBus actionBus)
         {
             actionBus.Subscribe<StartEvent, EntityEvent>((data) => StartEvent.OnStartEntityEvent(data));
             actionBus.Subscribe<InitEvent, EntityEvent>((data) => InitEvent.OnInitEntityEvent(data));

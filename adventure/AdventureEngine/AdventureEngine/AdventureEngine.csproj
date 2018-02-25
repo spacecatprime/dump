@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bus\ActionBus.cs" />
+    <Compile Include="Bus\ActionBusByKey.cs" />
     <Compile Include="Bus\MoveAction.cs" />
     <Compile Include="Component\AbstractComponent.cs" />
     <Compile Include="Component\AttributeBag.cs" />
@@ -58,6 +59,7 @@
     <Compile Include="Interface\IEntity.cs" />
     <Compile Include="Interface\IPreFab.cs" />
     <Compile Include="Interface\ISerializer.cs" />
+    <Compile Include="Model\CommandSystem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\AdventureModel.cs" />
     <Compile Include="Factory\ComponentFactory.cs" />
@@ -67,6 +69,8 @@
     <Compile Include="Model\GameSystem.cs" />
     <Compile Include="Factory\PreFabFactory.cs" />
     <Compile Include="Model\MoveSystem.cs" />
+    <Compile Include="Serialization\StateReader.cs" />
+    <Compile Include="Serialization\StateReaderXML.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

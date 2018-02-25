@@ -14,7 +14,7 @@ namespace AdventureEngine.Factory
     // TODO make an EntityContext class/struct
 
     /// <summary>
-    /// create default entities or deserializes an entity from a stream
+    /// create default entities or de-serializes an entity from a stream
     /// </summary>
     public class EntityFactory
     {

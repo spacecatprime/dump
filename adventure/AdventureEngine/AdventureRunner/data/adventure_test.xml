@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<AdventureEngine>
+  <rooms>
+    
+    <room id="0">
+      <attibute_bag name="stats">
+        <attribute key="name" value="Room One"/>
+      </attibute_bag>
+      <portal id="n.room_one" room_dir="n" to_portal="s.room_two"/>
+
+    <room id="1"/>
+      <attibute_bag name="stats">
+        <attribute key="name" value="Room Two"/>
+      </attibute_bag>
+      <portal id="s.room_two" room_dir="s" to_portal="n.room_one"/>
+    </room>
+    
+  </rooms>
+</AdventureEngine>

@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace AdventureEngine.Component
 {
+    /// <summary>
+    /// Creates a logical chunk for each Entity
+    /// </summary>
     public abstract class AbstractComponent : IComponent
     {
         protected IEntity m_ownedEntity  = null;

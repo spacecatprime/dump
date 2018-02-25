@@ -18,9 +18,9 @@ namespace AdventureEngine.Model
             m_gameEngine = gameEngine;
         }
 
-        public virtual bool CanHandle(string tokens)
-        {
-            throw new NotImplementedException();
-        }
+        /// <summary>
+        /// each system should get an update tick from time to time
+        /// </summary>
+        public abstract void Update(double delta);
     }
 }

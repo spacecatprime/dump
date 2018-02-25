@@ -31,11 +31,6 @@ namespace AdventureEngine.Model
             m_componentFactory = new ComponentFactory(this);
         }
 
-        public void RegisterDefaultAdventureComponents()
-        {
-            DefaultComponentFactory.RegisterDefaultAdventureComponents(m_componentFactory);
-            DefaultEntityEvents.Register(m_actionBus);
-         }
 
         // adding a root object will automatically call "on start" to all entities
         public void AddRootEntity(IEntity root)
@@ -52,7 +47,7 @@ namespace AdventureEngine.Model
         {
             if (m_rootEntities.Contains(root))
             {
-//                SytemActionBus.Signal<EndEvent, EntityEvent>(new EntityEvent(root));
+                SytemActionBus.Signal<EndEvent, EntityEvent>(new EntityEvent(root));
                 m_rootEntities.Remove(root);
             }
             throw new Exception("Could not find root entity to remove");
