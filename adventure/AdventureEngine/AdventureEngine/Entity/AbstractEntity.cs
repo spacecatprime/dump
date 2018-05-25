@@ -1,4 +1,5 @@
-﻿using AdventureEngine.Interface;
+﻿using AdventureEngine.Component;
+using AdventureEngine.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,15 +22,7 @@ namespace AdventureEngine.Entity
 
         List<IComponent> IEntity.Components
         {
-            get
-            {
-                return m_components;
-            }
-
-            set
-            {
-                throw new NotImplementedException();
-            }
+            get { return m_components; }
         }
 
         List<IEntity> IEntity.GetChildren()
@@ -45,6 +38,40 @@ namespace AdventureEngine.Entity
         IEntity IEntity.GetParent()
         {
             return m_parent;
+        }
+
+        object IEntity.GetAttribute(string name)
+        {
+            foreach (var comp in m_components)
+            {
+                if (comp is AttributeBag)
+                {
+                    string[] pair = name.Split('.');
+                    AttributeBag bag = comp as AttributeBag;
+                    if (bag.Name == pair[0])
+                    {
+                        return bag.GetValue(pair[1]);
+                    }
+                }
+            }
+            return null;
+        }
+
+        object IEntity.SetAttribute(string name, object value)
+        {
+            foreach (var comp in m_components)
+            {
+                if (comp is AttributeBag)
+                {
+                    string[] pair = name.Split('.');
+                    AttributeBag bag = comp as AttributeBag;
+                    if (bag.Name == pair[0])
+                    {
+                        return bag.SetValue(pair[1], value);
+                    }
+                }
+            }
+            return null;
         }
     }
 }

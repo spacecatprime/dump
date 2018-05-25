@@ -34,6 +34,15 @@ namespace AdventureRunner
             RunSimple();
             RunBuildARoom();
             RunSignalTest();
+            RunCommandTest();
+        }
+
+        private void RunCommandTest()
+        {
+            AdventureModel model = new AdventureModel();
+            model.RegisterDefaultAdventureComponents();
+            model.TheGameEngine.SytemActionBus.Signal<CommandSystem,string>("Hello world");
+            model.Tick();
         }
 
         private void RunSignalTest()
@@ -45,16 +54,17 @@ namespace AdventureRunner
 
         void RunSimple()
         {
-            GameEngine ge = new GameEngine();
-            ge.RegisterDefaultAdventureComponents();
-            var room = ge.ComponentFactory.Create(typeof(Room), null);
+            AdventureModel model = new AdventureModel();
+            model.RegisterDefaultAdventureComponents();
+            var room = model.TheGameEngine.ComponentFactory.Create(typeof(Room), null);
             Assert.IsInstanceOfType(room, typeof(Room));
         }
 
         void RunBuildARoom()
         {
-            GameEngine ge = new GameEngine();
-            ge.RegisterDefaultAdventureComponents();
+            AdventureModel model = new AdventureModel();
+            model.RegisterDefaultAdventureComponents();
+            GameEngine ge = model.TheGameEngine;
             IEntity e = ge.EntityFactory.CreateDefault(new object());
             e.Components.Add(ge.ComponentFactory.Create(typeof(Room), new object()));
             e.Components.Add(new FakeComponent());

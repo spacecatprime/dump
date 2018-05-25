@@ -9,7 +9,7 @@ namespace AdventureEngine.Factory
 {
     public class DefaultComponentFactory
     {
-        public static void RegisterDefaultAdventureComponents(ComponentFactory componentFactory)
+        public static void RegisterForDefaultAdventureEngine(ComponentFactory componentFactory)
         {
             componentFactory.ReigsterFactoryMethod((ge, ctx) => new AttributeBag(), () => typeof(AttributeBag));
             componentFactory.ReigsterFactoryMethod((ge, ctx) => new Character(), () => typeof(Character));

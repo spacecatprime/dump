@@ -24,6 +24,10 @@ namespace AdventureEngine.Interface
         IEntity GetParent();
 
         // list of logic and data components that make this Entity
-        List<IComponent> Components { get; set; }
+        List<IComponent> Components { get; }
+
+        // manage a named value (if any) from any attribute bag
+        object GetAttribute(string name);
+        object SetAttribute(string name, object value); // returns old value
     }
 }

@@ -12,5 +12,9 @@ namespace AdventureEngine.Model
             : base(gameEngine)
         {
         }
+
+        public override void Update(double delta)
+        {
+        }
     }
 }

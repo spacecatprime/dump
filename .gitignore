@@ -38,7 +38,5 @@ testing/logical/bin/**
 *.ipch
 *.pch
 *.idb
-adventure/AdventureEngine/AdventureEngine/obj/**
-adventure/AdventureEngine/AdventureEngine/bin/**
-adventure/AdventureEngine/AdventureRunner/obj/**
-adventure/AdventureEngine/AdventureRunner/bin/**
+adventure/AdventureEngine/AdventureRunner/obj/
+adventure/AdventureEngine/AdventureRunner/bin/
