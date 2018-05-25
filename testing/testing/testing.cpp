@@ -9,16 +9,31 @@
 #include "lifegrid.h"
 
 #define _GRID_TEST 1
-#define _FIXED_LEN_LIFE 1
-#define _SPARSE_LEN_LIFE 1
+#define _FIXED_LEN_LIFE 0
+#define _SPARSE_LEN_LIFE 0
 
 void DoAssert(int value, int expected)
 {
 	assert(value == expected);
 }
 
+#include <iostream>
+#define N 8
+void makeNextFrame(char frame[N][N])
+{
+    int t = sizeof(frame);
+    std::cout << "Frame size " << t;
+    frame[0][0] = 2;
+    frame[N-1][N - 1] = 8;
+}
+
 int main()
 {
+    char thisFrame[N][N];
+    thisFrame[0][0] = 1;
+    makeNextFrame(thisFrame);
+    thisFrame[0][0] = 3;
+
 #if _GRID_TEST
 {
 		lifegrid lgrid;

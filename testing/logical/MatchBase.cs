@@ -4,6 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/*
+ * Matches based on rank points
+ * - uses a global user set
+ * - matches a single user to any number of users
+ */
 namespace logical
 {
     public class MatchUser

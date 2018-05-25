@@ -10,8 +10,11 @@ namespace design
     {
         static void Main(string[] args)
         {
-            design.EquipmentDesign ed = new EquipmentDesign();
-            ed.Run();
+            (new EquipmentDesign()).Run();
+            (new SessionMatcherManager()).RunTester();
+            (new MonsterGroupMatcher()).RunTests();
+            (new MonsterGroupMatcherForTeam()).RunTests();
+            (new MonsterGroupMatcherWithTraits()).RunTests();
         }
     }
 }

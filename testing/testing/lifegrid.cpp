@@ -25,44 +25,41 @@ namespace LifeGrid
 		return num;
 	}
 
+    lifegrid::GridArray NextTurn(lifegrid::GridArray& grid, size_t stride, size_t total)
+    {
+        lifegrid::GridArray nextPage;
+        size_t height = total / stride;
+        for (int i = 0; i < total; ++i)
+        {
+            int y = static_cast<int>(i / stride);
+            int x = i % stride;
+            int num = NumNeighbors(grid, x, y, static_cast<int>(stride), static_cast<int>(height));
 
-	lifegrid::GridArray NextTurn(lifegrid::GridArray& grid, size_t stride, size_t total)
-	{
-		lifegrid::GridArray nextPage;
-		size_t height = total / stride;
-		for (int i = 0; i < total; ++i)
-		{
-			int y = static_cast<int>(i / stride);
-			int x = i % stride;
-			bool target = FindCell(grid, x, y, static_cast<int>(stride), static_cast<int>(height));
-			int num = NumNeighbors(grid, x, y, static_cast<int>(stride), static_cast<int>(height));
+            if (num == 3)
+            {
+                // Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
+                nextPage[i] = true;
+            }
+            else if (num < 2)
+            {
+                // Any live cell with fewer than two live neighbors dies, as if caused by under population.
+                nextPage[i] = false;
+            }
+            else if (num > 3)
+            {
+                // Any live cell with more than three live neighbors dies, as if by overpopulation.
+                nextPage[i] = false;
+            }
+            else
+            {
+                // Any live cell with two or three live neighbors lives on to the next generation.
+                nextPage[i] = FindCell(grid, x, y, static_cast<int>(stride), static_cast<int>(height));
+            }
+        }
+        return std::move(nextPage);
+    }
 
-			// assume status quo
-			nextPage[i] = target;
-
-			if (!target)
-			{
-				// Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
-				if (num == 3)
-				{
-					nextPage[i] = true;
-				}
-			}
-			else if (num < 2)
-			{
-				// Any live cell with fewer than two live neighbors dies, as if caused by under population.
-				nextPage[i] = false;
-			}
-			else if (num > 3)
-			{
-				// Any live cell with more than three live neighbors dies, as if by overpopulation.
-				nextPage[i] = false;
-			}
-		}
-		return std::move(nextPage);
-	}
-
-	void PrintArray(const lifegrid::GridArray& grid, size_t stride)
+    void PrintArray(const lifegrid::GridArray& grid, size_t stride)
 	{
 		size_t col = 0;
 		for (const auto it : grid)

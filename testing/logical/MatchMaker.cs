@@ -4,6 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/*
+ * Team based matching
+ * (not complete)
+ */
 namespace logical
 {
     public class User
